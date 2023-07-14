@@ -65,7 +65,8 @@ const userSchema = new Schema<IUser, UserModel>(
       type: [
         {
           bookId: {
-            type: mongoose.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Book',
             require: true,
           },
           flag: {
