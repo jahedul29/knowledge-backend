@@ -8,7 +8,7 @@ import { IBook, IBookFilters } from './book.interface';
 import Book from './book.model';
 
 const createBook = async (bookData: IBook): Promise<IBook | null> => {
-  const savedBook = await Book.create(bookData);
+  const savedBook = (await Book.create(bookData)).populate('author');
   return savedBook;
 };
 
@@ -24,7 +24,7 @@ const updateBook = async (
 
   const updatedBook = await Book.findOneAndUpdate({ _id: id }, book, {
     new: true,
-  });
+  }).populate('author');
 
   return updatedBook;
 };
@@ -75,6 +75,7 @@ const getAllBooks = async (
   }
 
   const books = await Book.find(filterConditions)
+    .populate('author')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
@@ -92,7 +93,7 @@ const getAllBooks = async (
 };
 
 const getSingleBook = async (id: string): Promise<IBook | null> => {
-  const book = await Book.findById(id);
+  const book = await Book.findById(id).populate('author');
   if (!book) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Book not found');
   }
@@ -104,7 +105,7 @@ const deleteBook = async (id: string): Promise<IBook | null> => {
   if (!book) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Book not found');
   }
-  const deletedBook = await Book.findByIdAndDelete(id);
+  const deletedBook = await Book.findByIdAndDelete(id).populate('author');
   return deletedBook;
 };
 

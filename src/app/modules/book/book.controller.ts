@@ -40,7 +40,7 @@ const updateBook: RequestHandler = catchAsync(
 
     if (
       authorizedUser.role === UserRoles.USER &&
-      authorizedUser?._id === author?._id.toString()
+      authorizedUser?._id !== author?._id.toString()
     ) {
       throw new ApiError(
         httpStatus.UNAUTHORIZED,
@@ -100,7 +100,7 @@ const deleteBook: RequestHandler = catchAsync(
 
     if (
       authorizedUser.role === UserRoles.USER &&
-      authorizedUser?._id === author?._id.toString()
+      authorizedUser?._id !== author?._id.toString()
     ) {
       throw new ApiError(
         httpStatus.UNAUTHORIZED,
