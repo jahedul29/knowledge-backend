@@ -10,5 +10,5 @@ export const bookGenreList: string[] = [
   'Biography',
   'Self-help',
 ];
-export const bookSearchableFields = ['title'];
-export const bookFilterOptions = ['searchTerm', 'rating'];
+export const bookSearchableFields = ['title', 'genre'];
+export const bookFilterOptions = ['searchTerm', 'rating', 'genre'];

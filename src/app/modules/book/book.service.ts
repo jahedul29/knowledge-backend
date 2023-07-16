@@ -64,7 +64,14 @@ const getAllBooks = async (
     andConditions.push({
       $and: Object.entries(filterData).map(([field, value]) => {
         if (field === 'rating' && value) {
-          return { rating: { $eq: parseInt(value) } };
+          return { rating: { $geq: parseInt(value) } };
+        } else if (typeof value === 'string') {
+          return {
+            [field]: {
+              $regex: `^${value}$`,
+              $options: 'i',
+            },
+          };
         } else {
           return { [field]: value };
         }

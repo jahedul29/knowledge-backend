@@ -26,7 +26,10 @@ const updateBookSchema = z.object({
     description: z.string().optional(),
     genre: z.enum([...bookGenreList] as [string, ...string[]]).optional(),
     cover: z.string().optional(),
-    publicationDate: z.date().optional(),
+    publicationDate: z.string().refine((value): value is string => {
+      const parsedDate = new Date(value);
+      return parsedDate instanceof Date && !isNaN(parsedDate.getTime());
+    }, 'Invalid publicationDate format'),
   }),
 });
 

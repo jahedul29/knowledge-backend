@@ -1,7 +1,4 @@
-import path from 'path';
 import { createLogger, format, transports } from 'winston';
-import DailyRotateFile from 'winston-daily-rotate-file';
-import config from '../config';
 const { combine, timestamp, label, printf, colorize } = format;
 
 const myFormat = printf(({ level, message, label, timestamp }) => {
@@ -38,37 +35,37 @@ const errorLogger = createLogger({
 
 // create logger file based on environment
 // Note: Please comment below part if you are going to deploy it in any free hosting
-if (config.env == 'production') {
-  logger.add(
-    new DailyRotateFile({
-      filename: path.join(
-        process.cwd(),
-        'logs',
-        'winston',
-        'successes',
-        'um-%DATE%-success.log'
-      ),
-      datePattern: 'YYYY-MM-DD-HH',
-      zippedArchive: true,
-      maxSize: '20m',
-      maxFiles: '14d',
-    })
-  );
-  errorLogger.add(
-    new DailyRotateFile({
-      filename: path.join(
-        process.cwd(),
-        'logs',
-        'winston',
-        'errors',
-        'um-%DATE%-error.log'
-      ),
-      datePattern: 'YYYY-MM-DD-HH',
-      zippedArchive: true,
-      maxSize: '20m',
-      maxFiles: '14d',
-    })
-  );
-}
+// if (config.env == 'production') {
+//   logger.add(
+//     new DailyRotateFile({
+//       filename: path.join(
+//         process.cwd(),
+//         'logs',
+//         'winston',
+//         'successes',
+//         'um-%DATE%-success.log'
+//       ),
+//       datePattern: 'YYYY-MM-DD-HH',
+//       zippedArchive: true,
+//       maxSize: '20m',
+//       maxFiles: '14d',
+//     })
+//   );
+//   errorLogger.add(
+//     new DailyRotateFile({
+//       filename: path.join(
+//         process.cwd(),
+//         'logs',
+//         'winston',
+//         'errors',
+//         'um-%DATE%-error.log'
+//       ),
+//       datePattern: 'YYYY-MM-DD-HH',
+//       zippedArchive: true,
+//       maxSize: '20m',
+//       maxFiles: '14d',
+//     })
+//   );
+// }
 
 export { errorLogger, logger };
