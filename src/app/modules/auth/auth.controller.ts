@@ -66,8 +66,22 @@ const refreshToken: RequestHandler = catchAsync(
   }
 );
 
+const getMyProfile: RequestHandler = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const savedUser = await AuthService.getMyProfile(req.user?._id);
+
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: 'Profile retrieved successfully.',
+      data: savedUser,
+    });
+  }
+);
+
 export const AuthController = {
   register,
   login,
   refreshToken,
+  getMyProfile,
 };

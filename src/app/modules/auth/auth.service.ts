@@ -80,8 +80,17 @@ const refreshToken = async (
   };
 };
 
+const getMyProfile = async (id: string): Promise<IUser | null> => {
+  const profile = await User.findOne({ _id: id });
+  if (!profile) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'profile not found');
+  }
+  return profile;
+};
+
 export const AuthService = {
   register,
   login,
   refreshToken,
+  getMyProfile,
 };

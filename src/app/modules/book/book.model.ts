@@ -16,7 +16,6 @@ const bookSchema = new Schema<IBook, BookModel>(
     description: {
       type: String,
       required: true,
-      unique: true,
     },
     genre: {
       type: String,

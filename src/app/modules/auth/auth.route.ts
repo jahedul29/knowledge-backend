@@ -1,9 +1,17 @@
 import express from 'express';
+import { UserRoles } from '../../../shared/enums';
+import authorize from '../../middlewares/authorize.middleware';
 import { validateRequestWithZod } from '../../middlewares/validateRequestWithZod.middleware';
 import { AuthController } from './auth.controller';
 import { AuthValidationZodSchema } from './auth.validation';
 
 const authRouter = express.Router();
+
+authRouter.get(
+  '/my-profile',
+  authorize([UserRoles.USER]),
+  AuthController.getMyProfile
+);
 
 authRouter.post(
   '/register',
