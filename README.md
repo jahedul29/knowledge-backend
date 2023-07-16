@@ -1,23 +1,27 @@
-# Express-Mongo-template-with-eslint-prettier-errorhandling-setup
+## Link link: [https://knowledge-backend-weld.vercel.app](https://knowledge-backend-weld.vercel.app)
 
-### Technologies used:
+## App routes
 
-- ##### ExpressJs (As nodejs framework)
-- ##### Mongodb (As database)
-- ##### Mongoose (As mongodb object modeling for node.js)
-- ##### Typescript
-- ##### Zod (For route level validation)
-- ##### Winston (As logger)
-- ##### Bcrypt (For password hashing)
-- ##### ts-node-dev (For running node application)
-- ##### http-status (For http code)
-- ##### dotenv (For env configuration)
-- ##### eslint (For linting)
-- ##### prettier (For formatting)
-- ##### prettier (For formatting)
-- ##### lint-staged (Run linters against staged git files and don't let 💩 slip into your code base!)
-- ##### husky (Git hook before committing)
+### Auth
 
-### Bonus:
+- [https://knowledge-backend-weld.vercel.app/api/v1/auth/login](https://knowledge-backend-weld.vercel.app/api/v1/auth/login) (POST)
+- [https://knowledge-backend-weld.vercel.app/api/v1/auth/register](https://knowledge-backend-weld.vercel.app/api/v1/auth/register) (POST)
+- [https://knowledge-backend-weld.vercel.app/api/v1/auth/my-profile](https://knowledge-backend-weld.vercel.app/api/v1/auth/my-profile) (GET)
 
-- ##### Complete user crud done
+### Book
+
+- [https://knowledge-backend-weld.vercel.app/api/v1/books](https://knowledge-backend-weld.vercel.app/api/v1/books) (GET - paginated and filterable with genre)
+- [https://knowledge-backend-weld.vercel.app/api/v1/books](https://knowledge-backend-weld.vercel.app/api/v1/books) (POST)
+- [https://knowledge-backend-weld.vercel.app/api/v1/books](https://knowledge-backend-weld.vercel.app/api/v1/books) (PATCH)
+- [https://knowledge-backend-weld.vercel.app/api/v1/books/:id](https://knowledge-backend-weld.vercel.app/api/v1/books/:id) (GET)
+- [https://knowledge-backend-weld.vercel.app/api/v1/books/:id](https://knowledge-backend-weld.vercel.app/api/v1/books/:id) (PATCH)
+- [https://knowledge-backend-weld.vercel.app/api/v1/books/:id](https://knowledge-backend-weld.vercel.app/api/v1/books/:id) (DELETE)
+
+### User
+
+- [https://knowledge-backend-weld.vercel.app/api/v1/user](https://knowledge-backend-weld.vercel.app/api/v1/books) (GET - paginated and filterable with genre)
+- [https://knowledge-backend-weld.vercel.app/api/v1/user](https://knowledge-backend-weld.vercel.app/api/v1/books) (POST)
+- [https://knowledge-backend-weld.vercel.app/api/v1/user](https://knowledge-backend-weld.vercel.app/api/v1/books) (PATCH)
+- [https://knowledge-backend-weld.vercel.app/api/v1/user/:id](https://knowledge-backend-weld.vercel.app/api/v1/books/:id) (GET)
+- [https://knowledge-backend-weld.vercel.app/api/v1/user/:id](https://knowledge-backend-weld.vercel.app/api/v1/books/:id) (PATCH)
+- [https://knowledge-backend-weld.vercel.app/api/v1/user/:id](https://knowledge-backend-weld.vercel.app/api/v1/books/:id) (DELETE)

@@ -10,7 +10,7 @@ const app: Application = express();
 // configuration
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://knoledge-store.netlify.app'],
     credentials: true,
   })
 );
