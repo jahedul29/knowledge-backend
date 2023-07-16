@@ -3,11 +3,13 @@ import { userRoles } from './user.constant';
 
 const createUserZodValidateSchema = z.object({
   body: z.object({
+    email: z
+      .string({
+        required_error: 'email is required',
+      })
+      .email(),
     phoneNumber: z.string({
       required_error: 'phoneNumber is required',
-    }),
-    role: z.enum([...userRoles] as [string, ...string[]], {
-      required_error: 'role is required',
     }),
     password: z.string({
       required_error: 'password is required',
@@ -23,8 +25,6 @@ const createUserZodValidateSchema = z.object({
     address: z.string({
       required_error: 'address is required',
     }),
-    budget: z.number().optional(),
-    income: z.number().optional(),
   }),
 });
 
@@ -40,8 +40,6 @@ const updateZodValidateSchema = z.object({
       })
       .optional(),
     address: z.string().optional(),
-    budget: z.number().optional(),
-    income: z.number().optional(),
   }),
 });
 

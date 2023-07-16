@@ -2,6 +2,7 @@ import httpStatus from 'http-status';
 import { Secret } from 'jsonwebtoken';
 import config from '../../../config';
 import { JwtHelpers } from '../../../helpers/jwtHelpers';
+import { UserRoles } from '../../../shared/enums';
 import { ApiError } from '../../../shared/errors/errors.clsses';
 import { IUser } from '../user/user.interface';
 import User from '../user/user.model';
@@ -12,6 +13,8 @@ import {
 } from './auth.interface';
 
 const register = async (user: IUser): Promise<IUser | null> => {
+  user.role = UserRoles.USER;
+
   const registeredUser = await User.create(user);
   return registeredUser;
 };
